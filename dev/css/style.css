@@ -77,9 +77,11 @@ body .leftlist ul {
 }
 
 body .leftlist ul li {
+  width: 100%;
   height: 90px;
   display: flex;
   align-items: center;
+  justify-content: center;
   margin: auto;
   font-size: 36px;
   color: whitesmoke;
