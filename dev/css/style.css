@@ -79,6 +79,10 @@ body .leftlist ul {
 body .leftlist ul li {
   height: 90px;
   display: flex;
+  align-items: center;
+  margin: auto;
+  font-size: 36px;
+  color: whitesmoke;
 }
 
 body .leftlist ul li:hover {
