@@ -1,0 +1,256 @@
+@charset "UTF-8";
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url(https://fonts.googleapis.com/earlyaccess/cwtexfangsong.css);
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+body {
+  font-family: ‘cwTeXFangSong’, serif;
+  display: grid;
+  grid-template-columns: 100px auto;
+  grid-template-rows: repeat(1, 1fr);
+  background-color: #e2e6ef;
+}
+
+body .leftlist {
+  height: 100vh;
+  grid-area: 1/1/2/2;
+  background-color: #012e4f;
+}
+
+body .leftlist .logo {
+  width: 80%;
+  display: flex;
+  margin: 10% auto;
+  cursor: pointer;
+}
+
+body .leftlist ul {
+  display: grid;
+  grid-template-rows: repeat(8, 1fr);
+  margin-top: 30%;
+}
+
+body .leftlist ul li {
+  height: 90px;
+  display: flex;
+}
+
+body .leftlist ul li:hover {
+  background-color: #f7b400;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+body .leftlist ul li svg {
+  font-size: 40px;
+  color: #f5f5f5;
+  margin: auto;
+  display: flex;
+}
+
+body .rightcontent {
+  width: 94%;
+  grid-area: 1/2/2/3;
+  margin-left: 3%;
+  margin-top: 2%;
+}
+
+body .rightcontent .title {
+  width: 200px;
+  height: 50px;
+  font-size: 24px;
+  font-weight: 900;
+  color: #012e4f;
+}
+
+body .rightcontent .title h1 {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transform: translateX(-15px);
+  background-color: whitesmoke;
+  padding-top: 15px;
+  border-radius: 10px;
+  position: relative;
+  z-index: -1;
+}
+
+body .rightcontent .title h1 .tabbg {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-color: #e2e6ef;
+  border-radius: 99em;
+  bottom: 15px;
+}
+
+body .rightcontent .title h1 .tabbg_sq1 {
+  left: -30px;
+}
+
+body .rightcontent .title h1 .tabbg_sq1::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: whitesmoke;
+  z-index: 10;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+}
+
+body .rightcontent .title h1 .tabbg_sq2 {
+  right: -30px;
+}
+
+body .rightcontent .title h1 .tabbg_sq2::after {
+  content: "";
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: whitesmoke;
+  z-index: 10;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+body .rightcontent .function_box {
+  display: flex;
+  width: 106%;
+  margin-left: -3%;
+  height: 80px;
+  background-color: whitesmoke;
+}
+
+body .rightcontent .function_box .functionbtn {
+  width: 80px;
+  height: 100%;
+  margin-left: 2.5%;
+}
+
+body .rightcontent .function_box .functionbtn #addbutton, body .rightcontent .function_box .functionbtn #searchbutton, body .rightcontent .function_box .functionbtn #classifybutton, body .rightcontent .function_box .functionbtn #settingbutton, body .rightcontent .function_box .functionbtn #bugreportbutton {
+  width: 100%;
+  height: 40px;
+  margin-top: 10px;
+  font-size: 24px;
+  background-color: #406480;
+  color: whitesmoke;
+  border-radius: 10px;
+  border: transparent;
+  outline: none;
+}
+
+body .rightcontent .function_box .functionbtn #addbutton:hover, body .rightcontent .function_box .functionbtn #searchbutton:hover, body .rightcontent .function_box .functionbtn #classifybutton:hover, body .rightcontent .function_box .functionbtn #settingbutton:hover, body .rightcontent .function_box .functionbtn #bugreportbutton:hover {
+  background-color: #f7b400;
+  transition: all .2s ease-in-out;
+  cursor: pointer;
+}
+
+body .rightcontent .function_box .functionbtn p {
+  text-align: center;
+  margin: 10% auto;
+  font-weight: 600;
+  color: #012e4f;
+}
+
+body .rightcontent .table #cardtable {
+  border: 2px transparent;
+  text-align: center;
+  border-collapse: separate;
+  -webkit-border-vertical-spacing: 20px;
+}
+
+body .rightcontent .table #cardtable tr:nth-child(odd) {
+  background-color: #aadbff;
+}
+
+body .rightcontent .table #cardtable tr:nth-child(even) {
+  background-color: #b0bbc3;
+}
+
+body .rightcontent .table #cardtable thead > tr:first-child {
+  background-color: #f5f5f5;
+  color: #707c96;
+}
+
+body .rightcontent .table #cardtable thead > tr:first-child th {
+  padding: 20px;
+}
+
+body .rightcontent .table #cardtable #tablecontent {
+  border: 1px solid #707c96;
+}
+
+body .rightcontent .table #cardtable #tablecontent tr:hover {
+  background-color: #f7b50073;
+}
+
+body .rightcontent .table #cardtable #tablecontent tr td {
+  padding: 20px 0;
+  vertical-align: middle;
+}
+
+body .rightcontent .table #cardtable #tablecontent tr td:hover {
+  background-color: #f7b500 !important;
+}
+
+body .rightcontent .table #cardtable #tablecontent tr td img {
+  border-radius: 99em;
+}
+
+body .rightcontent .table #cardtable #tablecontent tr td .modifybutton, body .rightcontent .table #cardtable #tablecontent tr td .deletebutton {
+  margin-top: 10px;
+  background-color: transparent;
+  color: #406480;
+  outline: none;
+  border: transparent;
+}
+/*# sourceMappingURL=style.css.map */

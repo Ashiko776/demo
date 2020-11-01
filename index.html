@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Hello World">
+  
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <!-- fontawesome -->
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script> 
+  <!-- popover -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="https://jqueryui.com/resources/demos/style.css">
+  <link rel="stylesheet" href="./dev/css/style.css">
+  
+  <title>NUEiP雲端人資系統 | 個人資料表</title>
+  <!-- favorite -->
+  <link rel="shortcut icon" href="https://www.nueip.com/favicon.ico" type='image/x-icon'/>
+  <link rel="icon" href="https://www.nueip.com/favicon.ico" type="image/x-icon" />
+  <link rel="bookmark" href="https://www.nueip.com/favicon.ico" type="image/x-icon" />
+</head>
+
+<body>
+  <nav class="leftlist">
+    <img class="logo" src="https://www.nueip.com/img/footer_logo.svg" alt="">
+    <ul>
+      <li><i class="fas fa-tasks"></i></li>
+      <li><i class="far fa-calendar-alt"></i></li>
+      <li><i class="fas fa-users"></i></li>
+      <li><i class="fas fa-file-alt"></i></li>
+      <li><i class="fas fa-chart-line"></i></li>
+      <li><i class="fas fa-cloud-upload-alt"></i></li>
+      <li><i class="fas fa-sliders-h"></i></li>
+      <li><i class="far fa-credit-card"></i></li>
+    </ul>
+  </nav>
+
+  <div class="rightcontent">
+    <div class="title">
+      <h1>個人資料表
+        <div class="tabbg tabbg_sq1"></div>
+        <div class="tabbg tabbg_sq2"></div>
+      </h1>
+    </div>
+    <div class="function_box">
+      <div class="functionbtn add">
+        <button id="addbutton"><i class="fas fa-plus"></i></button>
+        <p>新增資料</p>
+      </div>
+      <div class="functionbtn search">
+        <button id="searchbutton"><i class="fas fa-search"></i></button>
+        <p>搜　　尋</p>
+      </div>
+      <div class="functionbtn classify">
+        <button id="classifybutton"><i class="fas fa-th"></i></button>
+        <p>條件分類</p>
+      </div>
+      <div class="functionbtn setting">
+        <button id="settingbutton"><i class="fas fa-cog"></i></button>
+        <p>設　　定</p>
+      </div>
+      <div class="functionbtn bugreport">
+        <button id="bugreportbutton"><i class="fas fa-question"></i></button>
+        <p>問題回報</p>
+      </div>
+    </div>
+
+    <br />
+    <div class="table">
+      <table id="cardtable" cellpadding='0' cellspacing='0' border='2' bordercolor='black' width="100%">
+        <!-- <thead>
+          <tr>
+            <th>性別</th>
+            <th>中文名字</th>
+            <th>英文名字</th>
+            <th>連絡電話</th>
+            <th>電子信箱</th>
+            <th>修改</th>
+            <th>刪除</th>
+          </tr>
+        </thead> -->
+        <tbody id="tablecontent"></tbody>
+      </table>
+    </div>
+
+    <!--新增表單-->
+    <div id="dialog-addconfirm" title="新增表單" style="display: none">
+      <form method="post" id="addform">
+        <!-- 性別 -->
+        <div class="formsex">
+          <label>性別</label>
+          <div>
+            <label><input type="radio" name="addsex" value="man" class="radio" checked="checked">男</label> <label><input
+                type="radio" name="addsex" value="woman" class="radio">女</label>
+          </div>
+        </div>
+        <!-- 中文姓名 -->
+        <div class="formcnname">
+          <div>
+            <label>中文姓名</label> <input name="cnname" style="width: 100px" type="text" id="addcnname"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 英文姓名 -->
+        <div class="formenname">
+          <div>
+            <label>英文姓名</label> <input name="enname" style="width: 100px" type="text" id="addenname"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 連絡電話 -->
+        <div class="formtel">
+          <div>
+            <label>連絡電話</label> <input name="tel" style="width: 100px" type="text" id="addtel"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 電子信箱 -->
+        <div class="formemail">
+          <div>
+            <label>電子信箱</label> <input name="email" style="width: 100px" type="text" id="addtel"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 確認送出 -->
+      </form>
+    </div>
+
+    <!--搜尋表單-->
+    <div id="dialog-searchconfirm" title="搜尋表單" style="display: none">
+      <form method="post" id="searchform">
+        <!-- 中文姓名 -->
+        <div class="formcnname">
+          <div>
+            <label>中文姓名</label> <input name="cnname" style="width: 100px" type="text" id="secnname"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 英文姓名 -->
+        <div class="formenname">
+          <div>
+            <label>英文姓名</label> <input name="enname" style="width: 100px" type="text" id="seenname"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 性別 -->
+        <div class="formsex">
+          <label>性別</label>
+          <div>
+            <label><input type="radio" name="sesex" value="man" class="seradio">男</label> <label><input type="radio"
+                name="sesex" value="woman" class="seradio">女</label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <!--修改表單-->
+    <div id="dialog-modifyconfirm" title="修改表單" style="display: none">
+      <form method="post" id="modifyform">
+        <!-- 中文姓名 -->
+        <div class="formcnname">
+          <div>
+            <label>中文姓名</label> <input name="cnname" style="width: 100px" type="text" id="mocnname"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 英文姓名 -->
+        <div class="formenname">
+          <div>
+            <label>英文姓名</label> <input name="enname" style="width: 100px" type="text" id="moenname"
+              class="form-control">
+          </div>
+        </div>
+        <!-- 性別 -->
+        <div class="formsex">
+          <label>性別</label>
+          <div>
+            <label><input type="radio" name="mosex" value="man" class="radio" id="modifyman">男</label> <label><input
+                type="radio" name="mosex" value="woman" class="radio" id="modifywoman">女</label>
+          </div>
+        </div>
+
+        <div class="formsid" style="display: none">
+          <input name="sid" id="modifysid">
+        </div>
+        <!-- 確認送出 -->
+      </form>
+    </div>
+
+    <br>
+    <br>
+    <!-- <pre>
+      人易科技 前端上機測驗題
+      
+      環境：
+          將資料夾放到網頁伺服器中，用瀏覽器執行 http://網址/demo/index.html
+      要求：
+        1. 美化它，並說明要表達的感覺/主題，訂定的風格、配色
+        2. 將index.html中的js程式碼分離成檔案demo.js，並增加style.css檔案
+        3. 刪除鍵補上確認Dialog，且新增/修改/刪除的dialog使用bootstrap Modal實現 (bootstrap取代jQueryUI)
+        4. 表格(table)奇偶數列而有不同的底色，且滑鼠移到表格資料上時，以滑鼠指到的格子為中心，十字線上的 列/欄 都要變色 (列欄變色各得分50%)
+          |   | 色  |   |    |
+          | 色 | 鼠 | 色 | 色 |
+          |   | 色  |   |    |
+          |   | 色  |   |    |
+        5. 加二個欄位: 手機,電子信箱，並實作 欄位驗証及錯誤訊息顯示
+          - 必填：中文姓名、手機、信箱、性別
+          - 格式：手機、信箱
+          > ※ 註：手機填寫時為10碼數字，格式後面處理
+          > ※ 註：清單及編輯表單都要做
+        6. 特效實作 & 資料處理
+          - bootstrap tooltip：滑鼠「移到」人名上面時，顯示說明文字，內容格式： [性別]中文名子(英文名子)   (字串串接)
+          - bootstrap popover：滑鼠「點擊」手機上面時，顯示手機資訊，內容格式： 聯絡方式：xxxx-xxx-xxx    (字串格式轉換)
+        7. 實作bootstrap RWD效果
+        8. 提高Javascript檔物件化程度
+        9. 實作ajax
+        10. 增加自定特效，並說明其內容 (需4個特效，1個佔25%)
+
+
+        ※ 美化：選擇要表達的感覺/主題，然後訂定風格、確定配色
+        ※ 本範例為前端工程師練習題，只專注版面、美化、頁面行為，不需管後端資料
+        ※ 頁面編碼: UTF-8
+    </pre> -->
+  </div>
+
+
+
+  <script src="./demo.js"></script>
+
+
+</body> 
+
+</html>
